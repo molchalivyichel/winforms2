@@ -1,7 +1,5 @@
-#include<cstring>
-#include <string>
-
 #pragma once
+
 
 namespace $safeprojectname$ {
 
@@ -43,6 +41,7 @@ namespace $safeprojectname$ {
 	private: System::Windows::Forms::MonthCalendar^ monthCalendar1;
 	private: System::Windows::Forms::ProgressBar^ progressBar1;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
+	private: System::Windows::Forms::Button^ button2;
 
 
 
@@ -69,6 +68,7 @@ namespace $safeprojectname$ {
 			this->monthCalendar1 = (gcnew System::Windows::Forms::MonthCalendar());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -138,11 +138,22 @@ namespace $safeprojectname$ {
 			this->trackBar1->TabIndex = 5;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(484, 141);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(277, 23);
+			this->button2->TabIndex = 6;
+			this->button2->Text = L"Нажми на меня";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(773, 261);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->monthCalendar1);
@@ -195,7 +206,7 @@ private: System::Void button1_MouseEnter(System::Object^ sender, System::EventAr
 private: System::Void monthCalendar1_DateChanged(System::Object^ sender, System::Windows::Forms::DateRangeEventArgs^ e) {
 }
 private: System::Void progressBar1_Click(System::Object^ sender, System::EventArgs^ e) {
-	//progressBar1->Value = trackBar1->Padding;
+	progressBar1->Value = trackBar1->Value;
 }
 private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -203,7 +214,11 @@ private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ 
 private: System::Void webBrowser1_DocumentCompleted(System::Object^ sender, System::Windows::Forms::WebBrowserDocumentCompletedEventArgs^ e) {
 }
 private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e) {
+	//progressBar1->PerformStep();
 
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm::Close();
 }
 };
 }
